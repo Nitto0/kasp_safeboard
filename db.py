@@ -16,7 +16,7 @@ def get_data(product):
 
         product_id = row[0]
         versions = conn.execute("SELECT version FROM versions WHERE product_id = ?",
-                                (product_id,)).fetchone()
+                                (product_id,)).fetchall()
         vuln = conn.execute(
             '''
             SELECT kla_id, description, publish_date, start_vuln_version, fixed_version
@@ -24,7 +24,7 @@ def get_data(product):
             ORDER BY publish_date, kla_id
             ''',
             (product_id,)
-        )
+        ).fetchall()
         return versions, vuln
     finally:
         conn.close()

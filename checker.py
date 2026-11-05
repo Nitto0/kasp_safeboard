@@ -19,7 +19,7 @@ def is_vulnerabilities(version, start, fixed):
     start_parts = version_key(start)
     fixed_parts = version_key(fixed)
 
-    return start_parts <= version_parts <= fixed_parts
+    return start_parts <= version_parts < fixed_parts
 
 
 def find_safe_version(product):

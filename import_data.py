@@ -15,9 +15,9 @@ def create_tables():
     try:
         conn.executescript(Path("schema.sql").read_text(encoding="utf-8"))
 
-        conn.execute("DELETE FROM products")
-        conn.execute("DELETE FROM versions")
         conn.execute("DELETE FROM vulnerabilities")
+        conn.execute("DELETE FROM versions")
+        conn.execute("DELETE FROM products")
 
         products = set()
 
